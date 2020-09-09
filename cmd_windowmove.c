@@ -106,7 +106,6 @@ int cmd_windowmove(context_t *context) {
   consume_args(context, 2);
 
   XWindowAttributes wattr;
-  unsigned int original_w, original_h;
   unsigned int root_w, root_h; /* for percent */
 
   window_each(context, window_arg, {

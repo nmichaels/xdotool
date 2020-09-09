@@ -19,7 +19,8 @@ WARNFLAGS+=-pedantic -Wall -W -Wundef \
            -Wendif-labels -Wshadow -Wpointer-arith -Wbad-function-cast \
            -Wcast-align -Wwrite-strings -Wstrict-prototypes \
            -Wmissing-prototypes -Wnested-externs -Winline \
-           -Wdisabled-optimization -Wno-missing-field-initializers
+           -Wdisabled-optimization -Wno-missing-field-initializers \
+           -Wno-unused-local-typedefs -Werror
 LIBSUFFIX=$(shell sh platform.sh libsuffix)
 VERLIBSUFFIX=$(shell sh platform.sh libsuffix $(MAJOR))
 DYNLIBFLAG=$(shell sh platform.sh dynlibflag)

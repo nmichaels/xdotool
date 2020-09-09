@@ -370,7 +370,7 @@ int xdo_set_window_property(const xdo_t *xdo, Window wid, const char *property, 
   
   char netwm_property[256] = "_NET_";
   int ret = 0;
-  strncat(netwm_property, property, strlen(property));
+  strncat(netwm_property, property, sizeof(netwm_property) - 1);
 
   // Change the property
   ret = XChangeProperty(xdo->xdpy, wid, 

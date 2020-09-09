@@ -360,7 +360,7 @@ int script_main(int argc, char **argv) {
   /* read input... */
   int pos;
   char *token;
-  int result;
+  int result = EXIT_FAILURE;
 
   while (fgets(buffer, 4096, input) != NULL) {
     char *line = buffer;
@@ -438,6 +438,7 @@ int script_main(int argc, char **argv) {
 
       /* append token */
       if (token != NULL) {
+        size_t token_len = strlen(token);
 
         if(script_argc + 1 > script_argc_max){
           script_argv = realloc(script_argv, (script_argc + 1) * sizeof(char *));
@@ -449,10 +450,10 @@ int script_main(int argc, char **argv) {
                   argv[0], argv[1]);
           exit(EXIT_FAILURE);
         }
-        script_argv[script_argc] = (char *) calloc(strlen(token) + 1, sizeof(char));
+        script_argv[script_argc] = (char *) calloc(token_len + 1, sizeof(char));
 
         //printf("arg %d: %s\n", script_argc, token);
-        strncpy(script_argv[script_argc], token, strlen(token)+1);      
+        strncpy(script_argv[script_argc], token, token_len + 1);
         script_argc++;
       }
       
